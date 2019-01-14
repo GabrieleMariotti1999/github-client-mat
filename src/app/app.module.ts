@@ -32,6 +32,8 @@ import { TranslateModule, TranslateLoader, MissingTranslationHandler } from '@ng
 import { CustomTranslateLoader } from 'src/i18n/custom-translate-loader';
 import { MyMissingTranslationHandler } from 'src/i18n/missing-translation-handler';
 import { SecurityTestComponent } from './security-test/security-test.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
+import { SafeStylePipe } from './safe-style.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { SecurityTestComponent } from './security-test/security-test.component';
     IssueAddComponent,
     MenuComponent,
     ProfileComponent,
-    SecurityTestComponent
+    SecurityTestComponent,
+    SafeHtmlPipe,
+    SafeStylePipe
   ],
   imports: [
     BrowserModule,
