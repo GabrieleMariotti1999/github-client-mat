@@ -1,0 +1,17 @@
+mat-sidenav-content{
+    height: 100vh;
+    overflow: auto;
+}
+mat-sidenav {
+    min-width: 200px;
+}
+.mat-toolbar.mat-primary{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+.global-container{
+    margin-top: 74px;
+}

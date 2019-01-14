@@ -1,0 +1,41 @@
+<div class="add-issue-container">
+  <a mat-raised-button color="primary" routerLink="/issue-add">Aggiungi issue</a>
+</div>
+<mat-card>
+  <table mat-table [dataSource]="dataSource" matSort fxFill>
+
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let issue"> {{issue.number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> title </th>
+      <td mat-cell *matCellDef="let issue"> {{issue.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> state </th>
+      <td mat-cell *matCellDef="let issue">
+        <mat-icon>{{getIconName(issue)}}</mat-icon>
+        <mat-icon *ngIf="loading">cached</mat-icon>
+        <button mat-icon-button (click)="setState(issue)" color="primary">
+          <mat-icon>swap_horiz</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> user </th>
+      <td mat-cell *matCellDef="let issue"> {{issue.user.login}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let issue"> {{issue.created_at | date : 'dd/MM/yyyy HH:mm:ss'}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator (page)="doEvent($event)" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</mat-card>

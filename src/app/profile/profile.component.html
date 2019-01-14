@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title>
+    {{userInfo?.name}}
+  </mat-card-title>
+  <mat-card-content>
+    {{userInfo?.location}}
+    <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+    <button mat-raised-button (click)="loadMap(userInfo?.location)" color="primary">Ricarica mappa</button>
+  </mat-card-content>
+  {{address|json}}
+</mat-card>

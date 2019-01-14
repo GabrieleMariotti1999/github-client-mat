@@ -1,0 +1,37 @@
+<div fxLayout="column" class="menu-wrapper">
+  <mat-list>
+    <mat-list-item *ngIf="user">
+      <img matListAvatar [src]="user.avatar_url">
+      <h3 matLine> {{user.name}} </h3>
+      <p matLine>
+        <span>{{user.login}}</span>
+      </p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  <mat-nav-list fxFlex>
+    <mat-list-item [ngClass]="{current:current(page.url)}" *ngFor="let page of pages" [routerLink]="page.url">
+      <mat-icon mat-list-icon>{{page.icon}}</mat-icon>
+      {{page.name | translate}}
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-action-list>
+    <mat-divider></mat-divider>
+    <mat-list-item [matMenuTriggerFor]="langMenu">
+      <mat-icon mat-list-icon>language</mat-icon>
+      {{'menu.changeLanguage'|translate}}
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-list-item (click)="logout()">
+      <mat-icon mat-list-icon>exit_to_app</mat-icon>
+      {{'menu.logout'|translate}}
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-action-list>
+</div>
+
+<mat-menu #langMenu="matMenu" xPosition="after">
+  <button *ngFor='let lang of availableLanguages' mat-menu-item (click)="changeLanguageTo(lang)">{{'menu.languages.'+lang
+    | translate}}</button>
+</mat-menu>
