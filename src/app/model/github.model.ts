@@ -4,11 +4,7 @@ export class User {
     name: string;
     location: string;
 }
-export class Address {
-    lat: number;
-    lon: number;
-    displayName: string;
-}
+
 export class Issue {
     number: number;
     id: number;

@@ -5,6 +5,8 @@ export const it: Translation = {
         addIssue: 'Aggiungi issue',
         profile: 'Profilo',
         changeLanguage: 'Cambia lingua',
+        secTest: 'test sicurezza',
+        wsTest: 'test ws',
         languages: {
             it: 'Italiano',
             en: 'Inglese'
@@ -14,5 +16,8 @@ export const it: Translation = {
     login: {
         login: 'Accedi',
         token: 'Token di accesso'
+    },
+    logout: {
+        logout: 'esci'
     }
 };

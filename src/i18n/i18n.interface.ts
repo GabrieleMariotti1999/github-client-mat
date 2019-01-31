@@ -4,6 +4,8 @@ export interface Translation {
         addIssue: string,
         profile: string,
         changeLanguage: string,
+        secTest: String,
+        wsTest: String,
         languages: {
             it: string,
             en: string
@@ -13,5 +15,8 @@ export interface Translation {
     login: {
         login: string,
         token: string
+    };
+    logout: {
+        logout: string
     };
 }

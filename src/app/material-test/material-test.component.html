@@ -1,0 +1,47 @@
+<button mat-button mat-raised-button>SHISH</button>
+<button mat-button mat-raised-button color="primary">SHISH</button>
+<button mat-button mat-raised-button color="accent">SHISH</button>
+<button mat-button mat-raised-button color="warn">SHISH</button>
+<div class="alternative-theme">
+  <button mat-button mat-raised-button>SHISH</button>
+  <button mat-button mat-raised-button color="primary">SHISH</button>
+  <button mat-button mat-raised-button color="accent">SHISH</button>
+  <button mat-button mat-raised-button color="warn">SHISH</button>
+</div>
+<mat-card>
+  <form fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="center start">
+    <mat-form-field fxFlex="100%" fxFlex.gt-sm appearance="legacy">
+      <mat-label>
+        <mat-icon>account_circle</mat-icon>
+        your name
+      </mat-label>
+      <input matInput type="text" name="name" placeholder="name">
+    </mat-form-field>
+    <mat-form-field fxFlex="100%" fxFlex.gt-sm appearance="standard">
+      <input matInput [type]="showPassword ? 'text' : 'password'" name="matPassword" placeholder="password">
+      <mat-icon matSuffix (mouseenter)="showPassword=true" (mouseleave)="showPassword=false">lock</mat-icon>
+      <mat-hint>At least try with 4 characters...</mat-hint>
+    </mat-form-field>
+    <mat-form-field fxFlex="100%" fxFlex.gt-sm appearance="fill">
+      <mat-select placeholder="Language">
+        <mat-option value="it">Italian</mat-option>
+        <mat-option value="en">English</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!--<label for="radioLanguage">Radio Language</label>
+          <mat-radio-group>
+            <mat-radio-button value="en">English</mat-radio-button>
+            <mat-radio-button value="it">Italian</mat-radio-button>
+          </mat-radio-group>
+          <mat-checkbox value="Accept">Accept</mat-checkbox>-->
+    <mat-form-field fxFlex="100%" fxFlex.gt-sm appearance="outline">
+      <mat-label>Birth date</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!--<label for="age">Age</label>
+    <mat-slider name="age" min="18" max="99" step="1" thumbLabel="true"></mat-slider>-->
+    <button mat-button mat-raised-button color="primary" fxFlex="100%" fxFlex.gt-sm="100%">K</button>
+  </form>
+</mat-card>

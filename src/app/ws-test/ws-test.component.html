@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title fxLayout="row">
+    <span [ngClass]="{'success' : isOpen(), 'error': !isOpen()}">&bull;&nbsp;</span>
+    <span fxFlex>Web Socket test page</span>
+    <button type="submit" mat-flat-button color="primary" (click)="connect()" fxFlex="15%">Connect</button>
+    <button type="submit" mat-flat-button color="warn" (click)="disconnect()" fxFlex="15%">Disconnect</button>
+  </mat-card-title>
+  <mat-card-content>
+    <div *ngFor="let msg of history">
+      {{msg}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <form (submit)="sendMsg()">
+      <div fxLayout="row">
+        <mat-form-field fxFlex>
+          <input name="message" matInput [placeholder]="message" [(ngModel)]="message" fxFlex>
+        </mat-form-field>
+        <button type="submit" mat-flat-button color="primary" fxFlex="30%" [disabled]="!isOpen()">Send</button>
+      </div>
+    </form>
+  </mat-card-actions>
+</mat-card>

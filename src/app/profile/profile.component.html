@@ -4,8 +4,10 @@
   </mat-card-title>
   <mat-card-content>
     {{userInfo?.location}}
-    <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
-    <button mat-raised-button (click)="loadMap(userInfo?.location)" color="primary">Ricarica mappa</button>
+    <mat-icon *ngIf="loading">cached</mat-icon>
+    <agm-map [zoom]="15" [latitude]="lat" [longitude]="lng" *ngIf="!loading">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+    <button mat-raised-button (click)="loadMap(userInfo.location)" color="primary">Ricarica mappa</button>
   </mat-card-content>
-  {{address|json}}
 </mat-card>

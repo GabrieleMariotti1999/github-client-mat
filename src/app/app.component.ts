@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Auth0Service } from './services/auth0.service';
 
 @Component({
   selector: 'app-root',

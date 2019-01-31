@@ -1,0 +1,9 @@
+mat-card{
+    margin: 20px;
+    height: calc(100vh - 75px);
+    width: calc(100vw - 75px);
+}
+mat-card form{
+    height: 100%;
+    width: 100%;
+}

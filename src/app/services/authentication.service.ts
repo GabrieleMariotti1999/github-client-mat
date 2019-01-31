@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { User } from '../model/github.model';
 import { TokenService } from './token.service';
 import { Router } from '@angular/router';
@@ -25,10 +25,20 @@ export class AuthenticationService {
       });
   }
   authenticate(token: string): Observable<User> {
-    return this.httpClient.get<User>(`${environment.backend_url}/user?access_token=${token}`).pipe(map(resp => {
-      this.tokenService.setToken(token);
-      return resp;
-    }));
+    return this.httpClient.get<User>(`${environment.backend_url}/user?access_token=${token}`)
+      .pipe(map(resp => {
+        this.tokenService.setToken(token);
+        return resp;
+      }), catchError(this.handleErrorObservable('authenticate', 'error on authentication', null)));
+  }
+  public handleErrorObservable<T>(operation = 'operation', message?: string, result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      if (message) {
+        console.error(message);
+      }
+      return throwError('wrong credentials..., i guess');
+    };
   }
   getUserInfo(): Observable<User> {
     return this.httpClient.get<User>(`${environment.backend_url}/user?access_token=${this.tokenService.getToken()}`);
